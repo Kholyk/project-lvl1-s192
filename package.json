@@ -1,6 +1,6 @@
 {
   "name": "brain-games-kholyk",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
@@ -17,6 +17,9 @@
   },
   "author": "Oleg Kholyk",
   "license": "ISC",
+  "dependencies": {
+    "readline-sync": "*"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
