@@ -3,6 +3,8 @@ install:
 start:
 	npm run babel-node -- src/bin/brain-games.js
 publish:
-	npm publsh
+	npm publish
 lint:
-	npm run eslint --fix "src/*"
+	npm run eslint "src"
+even:
+	npm run babel-node -- src/bin/brain-even.js
