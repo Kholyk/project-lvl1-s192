@@ -12,3 +12,5 @@ calc:
 	npm run babel-node -- src/bin/brain-calc.js
 nod:
 	npm run babel-node -- src/bin/brain-nod.js
+balance:
+	npm run babel-node -- src/bin/brain-balance.js

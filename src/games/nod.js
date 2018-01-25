@@ -1,32 +1,21 @@
-import run from '../run';
+import { cons } from 'hexlet-pairs';
+import make from '../run';
 
-const nod = () => {
+export default () => {
+  // Function of game
   const NOD = (a, b) => {
     if (b === 0) {
       return a;
     }
-
     return NOD(b, a % b);
   };
-  const ask1 = {
-    f: (x, y) => NOD(x, y),
-    arg1: Math.round(Math.random() + 10),
-    arg2: Math.round((Math.random() * 10) + 1),
-    act: '',
+  // End function of game
+  const getRandom = () => Math.round(Math.random() * 10);
+  const container = () => {
+    const x = getRandom();
+    const y = getRandom();
+    return cons(`Find a NOD 0f ${x} and ${y}:`, String(NOD(x, y)));
   };
-  const ask2 = {
-    f: (x, y) => NOD(x, y),
-    arg1: Math.round(Math.random() + 10),
-    arg2: Math.round((Math.random() * 10) + 1),
-    act: '',
-  };
-  const ask3 = {
-    f: (x, y) => NOD(x, y),
-    arg1: Math.round(Math.random() + 10),
-    arg2: Math.round((Math.random() * 10) + 1),
-    act: '',
-  };
-  return run(ask1, ask2, ask3, 'numeric', 'NOD');
-};
 
-export default nod;
+  make('NOD GAME', container);
+};

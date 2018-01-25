@@ -1,6 +1,6 @@
 {
   "name": "brain-games-kholyk",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
     "brain-even": "dist/bin/brain-even.js",
@@ -27,6 +27,7 @@
   "author": "Oleg Kholyk",
   "license": "ISC",
   "dependencies": {
+    "hexlet-pairs": "^1.0.5",
     "readline-sync": "*"
   },
   "devDependencies": {

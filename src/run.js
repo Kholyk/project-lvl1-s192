@@ -1,30 +1,27 @@
-import { greeting, check, makeAsk, finMessage } from './lib';
+import readlineSync from 'readline-sync';
+import { car, cdr } from 'hexlet-pairs';
+import { greeting, finMessage } from './lib';
 
-const run = (ask1, ask2, ask3, dataType, gameName) => {
+export default (gameName, container) => {
   const userName = greeting(`Brain Games "${gameName}"`);
 
   let counter = 0;
-  let exec;
   while (counter < 3) {
-    const definer = (cnt) => {
-      switch (cnt) {
-        default:
-          return ask1;
-        case 1:
-          return ask2;
-        case 2:
-          return ask3;
-      }
-    };
-    exec = definer(counter);
-    const megaAsk = makeAsk(exec.f, exec.arg1, exec.arg2, exec.act);
-    if (check(megaAsk, dataType)) {
+    const data = container();
+    const question = car(data);
+    const answer = cdr(data);
+
+    // here we already have all vars
+    console.log(`\r\nQuestion: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    if (userAnswer === answer) {
+      console.log('\r\nCorrect!');
       counter += 1;
     } else {
+      finMessage(counter, userName);
       break;
     }
   }
+
   finMessage(counter, userName);
 };
-
-export default run;

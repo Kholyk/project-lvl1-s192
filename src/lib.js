@@ -7,12 +7,6 @@ export const greeting = (gameType) => {
   return userName;
 };
 
-export const makeAsk = (askFunc, arg1, arg2, exp) => {
-  console.log(`\r\nQuestion: ${arg1} ${exp} ${arg2}`);
-  return askFunc(arg1, arg2);
-};
-
-
 export const check = (question, format) => {
   const answer = readlineSync.question('Your answer: ');
   if (format === 'numeric') {
