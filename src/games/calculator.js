@@ -1,25 +1,42 @@
-import run from '../run';
+import { cons } from 'hexlet-pairs';
+import make from '../run';
 
-const calc = () => {
-  const ask1 = {
-    f: (x, y) => x + y,
-    arg1: Math.round(Math.random() + 10),
-    arg2: Math.round((Math.random() * 10) + 1),
-    act: '+',
+export default () => {
+  // Function of game
+  const calc = (a, b, oper) => {
+    switch (oper) {
+      case '+':
+        return a + b;
+      case '-':
+        return a - b;
+      case '*':
+        return a * b;
+      default:
+        return 'Unknown operation';
+    }
   };
-  const ask2 = {
-    f: (x, y) => x - y,
-    arg1: Math.round(Math.random() + 10),
-    arg2: Math.round((Math.random() * 10) + 1),
-    act: '-',
+
+  const getOperator = () => {
+    const rnd = Math.round((Math.random() * 2) + 1);
+    switch (rnd) {
+      case 1:
+        return '+';
+      case 2:
+        return '-';
+      case 3:
+        return '*';
+      default:
+        return 'Unknown operation';
+    }
   };
-  const ask3 = {
-    f: (x, y) => x * y,
-    arg1: Math.round(Math.random() + 10),
-    arg2: Math.round((Math.random() * 10) + 1),
-    act: '*',
+  // End function of game
+  const getRandom = () => Math.round(Math.random() * 10);
+  const container = () => {
+    const a = getRandom();
+    const b = getRandom();
+    const oper = getOperator();
+    return cons(`Find a value of expression: ${a} ${oper} ${b} = `, String(calc(a, b, oper)));
   };
-  return run(ask1, ask2, ask3, 'numeric', 'Calculator');
+
+  make('Calculator', container);
 };
-
-export default calc;
