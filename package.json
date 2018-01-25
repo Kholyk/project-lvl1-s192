@@ -1,11 +1,11 @@
 {
   "name": "brain-games-kholyk",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js",
     "brain-even": "dist/bin/brain-even.js",
     "brain-calc": "dist/bin/brain-calc.js",
-    "brain-nod": "dist/bin/brain-nod.js"
+    "brain-gcd": "dist/bin/brain-nod.js",
+    "brain-balance": "dist/bin/brain-balance.js"
   },
   "description": "First project on Hexlet by Kholyk",
   "main": "index.js",
