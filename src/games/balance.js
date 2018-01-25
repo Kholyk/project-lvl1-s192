@@ -1,21 +1,12 @@
 import { cons } from 'hexlet-pairs';
+import { getRandom, asc, normalize } from '../lib';
 import run from '..';
 
 export default () => {
-  // Function of game
-  const NOD = (a, b) => {
-    if (b === 0) {
-      return a;
-    }
-    return NOD(b, a % b);
-  };
-  // End function of game
-  const getRandom = () => Math.round(Math.random() * 10);
   const container = () => {
-    const x = getRandom();
-    const y = getRandom();
-    return cons(`Find a NOD 0f ${x} and ${y}:`, String(NOD(x, y)));
+    const number = getRandom(100, 400);
+    return cons(`${number}:`, asc(String(normalize(number))));
   };
 
-  run('NOD GAME', container);
+  run('Balance the given number.', container);
 };
