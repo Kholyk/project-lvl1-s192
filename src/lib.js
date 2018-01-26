@@ -117,26 +117,22 @@ export { normalize };
 
 export const asc = str => str.split('').sort().join('');
 
-export const progression = (st, func, qty, blanc) => {
-  let out = '';
-  let start = st;
-  const spacer = '..';
-  let missedEl;
-  for (let i = 1; i <= (qty - 1); i += 1) {
-    if (i === blanc) {
-      missedEl = func(start);
-      start = func(start);
-      out += `${spacer} `;
-    } else {
-      out += `${func(start)} `;
-      start = func(start);
-    }
+// Progression
+const element = (first, den, num) => ((num <= 1) ? first : element(first, den, num - 1) + den);
+
+export { element };
+
+export const progression = (first, den, n, missed) => {
+  if (n <= 0) {
+    return '';
   }
-  return {
-    outProgr: out,
-    missed: missedEl,
-  };
+  if (n === missed) {
+    return String(`${progression(first, den, n - 1, missed)} ..`);
+  }
+  return String(`${progression(first, den, n - 1, missed)} ${element(first, den, n)}`);
 };
+
+// Progression
 
 export const isPrime = (n) => {
   if (n <= 1) {
