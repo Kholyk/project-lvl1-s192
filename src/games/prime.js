@@ -5,7 +5,7 @@ import run from '..';
 export default () => {
   const container = () => {
     const x = getRandom(3, 10);
-    return cons(`${x}:`, isPrime(x));
+    return cons(`${x}:`, isPrime(x) ? 'yes' : 'no');
   };
 
   run('Is this number prime?', container);

@@ -145,11 +145,11 @@ export const isPrime = (n) => {
   let i = 2;
   while (i <= n / 2 && i !== n) {
     if (n % i === 0) {
-      return 'no';
+      return false;
     }
     i += 1;
   }
-  return 'yes';
+  return true;
 };
 
 // end normalizer set
