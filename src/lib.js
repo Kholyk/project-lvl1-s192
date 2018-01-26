@@ -117,4 +117,25 @@ export { normalize };
 
 export const asc = str => str.split('').sort().join('');
 
+export const progression = (st, func, qty, blanc) => {
+  let out = '';
+  let start = st;
+  const spacer = '..';
+  let missedEl;
+  for (let i = 1; i <= (qty - 1); i += 1) {
+    if (i === blanc) {
+      missedEl = func(start);
+      start = func(start);
+      out += `${spacer} `;
+    } else {
+      out += `${func(start)} `;
+      start = func(start);
+    }
+  }
+  return {
+    outProgr: out,
+    missed: missedEl,
+  };
+};
+
 // end normalizer set
