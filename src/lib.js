@@ -65,57 +65,19 @@ export const gcd = (a, b) => {
   }
   return gcd(b, a % b);
 };
-// for normalizer
-const toString = num => String(num);
-const len = str => str.length;
-const head = str => str.substr(0, 1);
-const tail = str => str.substr(1, str.length);
-
-
-const min = (num) => {
-  const string = toString(num);
-  const length = len(string);
-  if (length === 1) {
-    return Number(string);
-  }
-  if (Number(head(string)) < Number(min(tail(string)))) {
-    return Number(head(string));
-  }
-  return Number(min(tail(string)));
-};
-
-const max = (num) => {
-  const string = toString(num);
-  const length = len(string);
-  if (length === 1) {
-    return Number(string);
-  }
-  if (Number(head(string)) > Number(max(tail(string)))) {
-    return Number(head(string));
-  }
-  return Number(max(tail(string)));
-};
-
-export const replaceNum = (str, from, to) => str.replace(from, to);
-
-// sort ASC should be added
 const normalize = (number) => {
-  const minV = (min(number));
-  const maxV = (max(number));
-  if ((maxV - minV) <= 1) {
-    return number;
+  const strFromNum = String(number);
+  const max = Math.max(...strFromNum);
+  const min = Math.min(...strFromNum);
+
+  if ((max - min) <= 1) {
+    return number.split('').sort().join('');
   }
-  const avgV = (maxV - minV) / 2;
-  const avgN = (avgV % 2 !== 0) ? Math.round(avgV) : avgV;
-  const newMin = minV + avgN;
-  const newMax = maxV - avgN;
-  const newNumber1 = Number(replaceNum(String(number), minV, newMin));
-  const newNumber2 = Number(replaceNum(String(newNumber1), maxV, newMax));
-  return normalize(newNumber2);
+  const newString1 = strFromNum.replace(min, min + 1);
+  const newString2 = newString1.replace(max, max - 1);
+  return normalize(newString2);
 };
 export { normalize };
-
-export const asc = str => str.split('').sort().join('');
 
 // Progression
 const element = (first, den, num) => ((num <= 1) ? first : element(first, den, num - 1) + den);
