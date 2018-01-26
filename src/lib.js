@@ -138,4 +138,18 @@ export const progression = (st, func, qty, blanc) => {
   };
 };
 
+export const isPrime = (n) => {
+  if (n <= 1) {
+    return false;
+  }
+  let i = 2;
+  while (i <= n / 2 && i !== n) {
+    if (n % i === 0) {
+      return 'no';
+    }
+    i += 1;
+  }
+  return 'yes';
+};
+
 // end normalizer set
