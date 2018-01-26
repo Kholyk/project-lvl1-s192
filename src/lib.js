@@ -52,11 +52,11 @@ export const getOperator = (n) => {
   }
 };
 
-export const even = (num) => {
+export const isEven = (num) => {
   if (num % 2 === 0) {
-    return 'yes';
+    return true;
   }
-  return 'no';
+  return false;
 };
 
 export const gcd = (a, b) => {
@@ -65,7 +65,7 @@ export const gcd = (a, b) => {
   }
   return gcd(b, a % b);
 };
-const normalize = (number) => {
+const balanceNum = (number) => {
   const strFromNum = String(number);
   const max = Math.max(...strFromNum);
   const min = Math.min(...strFromNum);
@@ -75,14 +75,17 @@ const normalize = (number) => {
   }
   const newString1 = strFromNum.replace(min, min + 1);
   const newString2 = newString1.replace(max, max - 1);
-  return normalize(newString2);
+  return balanceNum(newString2);
 };
-export { normalize };
+export { balanceNum };
 
 // Progression
-const element = (first, den, num) => ((num <= 1) ? first : element(first, den, num - 1) + den);
-
-export { element };
+export const nElementOfProgression = (first, den, num) => {
+  if (num <= 1) {
+    return first;
+  }
+  return nElementOfProgression(first, den, num - 1) + den;
+};
 
 export const progression = (first, den, n, missed) => {
   if (n <= 0) {
@@ -91,10 +94,10 @@ export const progression = (first, den, n, missed) => {
   if (n === missed) {
     return String(`${progression(first, den, n - 1, missed)} ..`);
   }
-  return String(`${progression(first, den, n - 1, missed)} ${element(first, den, n)}`);
+  return String(`${progression(first, den, n - 1, missed)} ${nElementOfProgression(first, den, n)}`);
 };
 
-// Progression
+// End of Progression
 
 export const isPrime = (n) => {
   if (n <= 1) {
@@ -109,5 +112,3 @@ export const isPrime = (n) => {
   }
   return true;
 };
-
-// end normalizer set

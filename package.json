@@ -1,6 +1,6 @@
 {
   "name": "brain-games-kholyk",
-  "version": "0.0.20",
+  "version": "0.1.1",
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
     "brain-calc": "dist/bin/brain-calc.js",

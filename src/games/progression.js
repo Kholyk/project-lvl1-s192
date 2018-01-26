@@ -1,5 +1,5 @@
 import { cons } from 'hexlet-pairs';
-import { getRandom, element, progression } from '../lib';
+import { getRandom, nElementOfProgression, progression } from '../lib';
 import run from '..';
 
 export default () => {
@@ -9,7 +9,7 @@ export default () => {
     const qty = 10;
     const missed = getRandom(3, 7);
     const question = progression(start, den, qty, missed);
-    const answer = String(element(start, den, missed));
+    const answer = String(nElementOfProgression(start, den, missed));
     return cons(question, answer);
   };
 
